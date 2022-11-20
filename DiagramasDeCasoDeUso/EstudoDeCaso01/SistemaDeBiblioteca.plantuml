@@ -1,0 +1,68 @@
+@startuml Sistema de biblioteca
+
+    'Orientação dos elementos do diagrama
+    left to right direction
+
+    'Resolução do diagrama
+    skinparam dpi           200
+
+    'Aparencia dos casos de uso
+    skinparam usecase {
+        BackgroundColor     #fefece
+        BorderColor         #bd4662
+        BorderThickness     1
+        FontColor           black
+        FontName            Calibri
+        FontSize            16
+        FontStyle           normal
+        Shadowing           4
+    }
+
+    'Aparencia das associações
+    skinparam arrow {
+        Thickness           1
+        Color               black
+    }
+
+    'Aparencia dos atores
+    skinparam actor {
+        Style               awesome
+        BackgroundColor     indigo
+        BorderColor         black
+        FontColor           black
+        FontName            Calibri
+        FontSize            16
+        Shadowing           4
+    }
+
+    'Aparencia do retangulo
+    skinparam rectangle {
+        BackgroundColor     white
+        BorderColor         mediumvioletred
+        BorderThickness     1
+        FontColor           mediumvioletred
+        FontName            Calibri
+        FontSize            16
+        FontStyle           bold
+        Shadowing           4
+    }
+
+    'Declaração dos atores
+    actor "Secretária" <<User>> as secretaria
+    actor "Funcionário" <<User>> as funcionario
+
+    'Declaração do retangulo e dos casos de uso
+    rectangle "Sistema de biblioteca" {
+        usecase "Emprestar livros" as emprestar
+        usecase "Devolver livros" as devolver
+        usecase "Visualizar livros emprestados" as visualizar
+        usecase "Pesquisar livros" as pesquisar
+    }
+
+    'Associações entre atores e casos de uso
+    secretaria -- emprestar
+    secretaria -- devolver
+    secretaria -- visualizar
+    pesquisar -- funcionario
+
+@enduml

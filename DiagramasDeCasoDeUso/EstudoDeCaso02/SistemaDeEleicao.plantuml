@@ -1,0 +1,66 @@
+@startuml Sistema de eleicao
+
+    'Orientação dos elementos do diagrama
+    left to right direction
+
+    'Resolução do diagrama
+    skinparam dpi           200
+
+    'Aparencia dos casos de uso
+    skinparam usecase {
+        BackgroundColor     #fefece
+        BorderColor         #bd4662
+        BorderThickness     1
+        FontColor           black
+        FontName            Calibri
+        FontSize            16
+        FontStyle           normal
+        Shadowing           4
+    }
+
+    'Aparencia das associações
+    skinparam arrow {
+        Thickness           1
+        Color               black
+    }
+
+    'Aparencia dos atores
+    skinparam actor {
+        Style               hollow
+        BackgroundColor     indigo
+        BorderColor         black
+        FontColor           black
+        FontName            Calibri
+        FontSize            16
+        Shadowing           4
+    }
+
+    'Aparencia do pacote
+    skinparam package {
+        BackgroundColor     white
+        BorderColor         mediumblue
+        BorderThickness     1
+        FontColor           mediumblue
+        FontName            Calibri
+        FontSize            16
+        FontStyle           normal
+        Shadowing           4
+    }
+
+    'Declaração dos atores
+    actor "Eleitor" as eleitor
+    actor "Comissão Eleitoral" as comissao_eleitoral
+
+    'Declaração do pacote e dos casos de uso
+    package "Eleição" {
+        usecase "Votar" as votar
+        usecase "Manter candidatos" as manter_candidatos
+        usecase "Emitir relatório de apuração de votos" as emitir_relatorio
+    }
+
+    'Associações entre atores e casos de uso
+    eleitor -- votar
+    manter_candidatos -- comissao_eleitoral
+    emitir_relatorio -- comissao_eleitoral
+
+@enduml
